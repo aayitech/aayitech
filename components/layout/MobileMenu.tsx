@@ -13,6 +13,7 @@ import {
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
+  signedInName: string;
 }
 
 const navLinks = [
@@ -46,6 +47,7 @@ const socials = [
 export default function MobileMenu({
   open,
   onClose,
+  signedInName,
 }: MobileMenuProps) {
   return (
     <AnimatePresence>
@@ -101,14 +103,14 @@ AAYI<span className="text-accent">/TECH</span>              </Link>
 
             {/* CTA */}
             <Link
-              href="/signup"
+              href={signedInName ? "/account" : "/signup"}
               onClick={onClose}
               className="mt-8 flex items-center justify-center rounded-xl bg-primary
 text-primary-foreground
 hover:bg-accent
 hover:text-background px-6 py-4 font-semibold transition"
             >
-              Create a free account
+              {signedInName ? `Welcome, ${signedInName} · My account` : "Create a free account"}
             </Link>
 
             {/* Social */}

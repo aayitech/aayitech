@@ -1,4 +1,4 @@
-import { aiErrorResponse, groqCompletion } from "@/lib/groq";
+import { aiErrorResponse, aiCompletion } from "@/lib/ai-provider";
 
 export const runtime = "nodejs";
 
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     if (!messages.length || messages[messages.length - 1].role !== "user") {
       return Response.json({ message: "Ask a question to start a conversation." }, { status: 400 });
     }
-    const answer = await groqCompletion([{ role: "system", content: siteGuide }, ...messages]);
+    const answer = await aiCompletion([{ role: "system", content: siteGuide }, ...messages]);
     return Response.json({ answer });
   } catch (error) {
     return aiErrorResponse(error);

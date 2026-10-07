@@ -20,13 +20,13 @@ const navItems = [
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [signedIn, setSignedIn] = useState(false);
+  const [signedInName, setSignedInName] = useState("");
   const { theme, toggleTheme } = useTheme();
   const darkMode = theme === "dark";
 
   useEffect(() => {
-    fetch("/api/auth/me").then((response) => response.json()).then((result) => setSignedIn(Boolean(result.user))).catch(() => setSignedIn(false));
-  }, []);
+    fetch("/api/auth/me").then((response) => response.json()).then((result) => setSignedInName(typeof result.user?.full_name === "string" ? result.user.full_name.trim().split(/\s+/)[0] : "")).catch(() => setSignedInName(""));
+  }, [pathname]);
 
   if (pathname === "/jamil" || pathname.startsWith("/ambreen") || pathname.startsWith("/mustansar") || pathname.startsWith("/adil")) return null;
 
@@ -102,10 +102,10 @@ export default function Navbar() {
 
             {/* Get Started */}
             <Link
-              href={signedIn ? "/account" : "/signup"}
+              href={signedInName ? "/account" : "/signup"}
               className="hidden rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-accent hover:text-background hover:shadow-lg lg:flex"
             >
-              {signedIn ? "My AAYI" : "Join AAYI"}
+              {signedInName ? `Welcome, ${signedInName}` : "Join AAYI"}
             </Link>
 
             {/* Mobile Menu */}
@@ -125,6 +125,7 @@ export default function Navbar() {
       <MobileMenu
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
+        signedInName={signedInName}
       />
     </>
   );

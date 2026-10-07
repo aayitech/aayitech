@@ -31,12 +31,12 @@ Copy `.env.example` to `.env.local` and configure the server-only environment va
 - `DATABASE_URL`: PostgreSQL connection string. Railway's Postgres service exposes this variable; link it to the web service with a Railway reference variable.
 - `DATABASE_SSL`: set to `true` only when the database connection requires TLS.
 - `AUTH_SECRET`: a unique random secret of at least 32 characters for signing login sessions.
-- `GROQ_API_KEY`: enables the SEO research generator and AAYI site assistant. The key stays on the server. Provider availability and limits depend on the selected Groq account/model.
+- `OPENROUTER_API_KEY`: enables the SEO research generator and AAYI site assistant. The default `OPENROUTER_MODEL=openrouter/free` routes only to free models; free accounts have request limits and model availability can change. Keep the key on the server.
 - `ALPHA_VANTAGE_API_KEY`: enables stock quote lookups. Without it, the site explains that quotes are not configured.
 
 The first account request creates the `aayi_users` and `aayi_keyword_reports` tables in the configured database. Passwords are stored as salted scrypt hashes. Signed-in keyword reports are associated with the account. Crypto market direction uses Binance public market data and does not need an account or API key.
 
-In Railway, add a PostgreSQL service, reference its `DATABASE_URL` from the Next.js service, and set `AUTH_SECRET`, `GROQ_API_KEY`, and optionally `ALPHA_VANTAGE_API_KEY` in the Next.js service's Variables tab. Set `DATABASE_SSL=true` only if the connection requires TLS. Configure secrets in Railway rather than committing them to the repository.
+In Railway, add a PostgreSQL service, reference its `DATABASE_URL` from the Next.js service, and set `AUTH_SECRET`, `OPENROUTER_API_KEY`, and optionally `ALPHA_VANTAGE_API_KEY` in the Next.js service's Variables tab. Set `DATABASE_SSL=true` only if the connection requires TLS. Configure secrets in Railway rather than committing them to the repository. Set `CONTACT_EMAIL` to receive new signup notifications via the configured Resend integration.
 
 The affiliate page currently provides the disclosure and category structure; partner recommendations and tracked links have not been added yet.
 

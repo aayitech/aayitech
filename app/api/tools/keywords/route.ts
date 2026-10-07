@@ -1,5 +1,5 @@
 import { getSessionUser } from "@/lib/auth";
-import { aiErrorResponse, groqCompletion } from "@/lib/groq";
+import { aiErrorResponse, aiCompletion } from "@/lib/ai-provider";
 import { ensureSchema, getPool } from "@/lib/db";
 
 export const runtime = "nodejs";
@@ -13,12 +13,12 @@ export async function POST(request: Request) {
     const business = typeof body.business === "string" ? body.business.trim().slice(0, 160) : "";
     if (topic.length < 3) return Response.json({ message: "Add a topic or service with at least 3 characters." }, { status: 400 });
 
-    const raw = await groqCompletion([
+    const raw = await aiCompletion([
       { role: "system", content: "You are an experienced SEO strategist. Create useful, specific keyword research for a small business. Do not invent search volume or keyword difficulty numbers. Distinguish suggestions from measured data. Return valid JSON only, with keys: summary (string), primaryKeyword (string), keywords (array of objects with keyword, intent, cluster, priority (high/medium/low), and why), pageTitle (string), metaDescription (string), contentAngles (array of strings), faqIdeas (array of strings). Give 15 varied long-tail and supporting keyword ideas. Keep the language clear and practical." },
       { role: "user", content: JSON.stringify({ topic, targetCountry: country || "Not specified", targetAudience: audience || "Not specified", businessType: business || "Not specified" }) },
     ], true);
     let report: unknown;
-    try { report = JSON.parse(raw); } catch { throw new Error("GROQ_EMPTY_RESPONSE"); }
+    try { report = JSON.parse(raw); } catch { throw new Error("AI_EMPTY_RESPONSE"); }
 
     const user = await getSessionUser();
     let saved = false;
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     }
     return Response.json({ report, saved });
   } catch (error) {
-    if (error instanceof Error && error.message === "GROQ_NOT_CONFIGURED") return aiErrorResponse(error);
+    if (error instanceof Error && error.message === "AI_NOT_CONFIGURED") return aiErrorResponse(error);
     return aiErrorResponse(error);
   }
 }
