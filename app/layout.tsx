@@ -20,9 +20,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AAYI TECH | Free Tools for Everyday Tasks",
+  title: "AAYI TECH | Useful Digital Tools",
   description:
-    "Small, useful tools for everyday work. Clean up text, count words, calculate discounts, and split bills for free with AAYI TECH.",
+    "Explore AAYI TECH's SEO keyword research, simple stock and crypto market views, AI site assistant, and carefully selected affiliate tools.",
 };
 
 export default function RootLayout({

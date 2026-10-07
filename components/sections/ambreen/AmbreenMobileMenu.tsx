@@ -2,17 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 
 const navItems = [
   ["About", "#about"], ["Expertise", "#expertise"],
-  ["Experience", "#experience"], ["Projects", "#projects"],
+  ["Experience", "#experience"], ["Projects", "/ambreen/projects"],
   ["Tech Stack", "#tech-stack"], ["Education", "#education"],
   ["Contact", "#contact"],
 ];
 
 export default function AmbreenMobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const pathname = usePathname();
   useEffect(() => {
     const element = dialog.current;
     if (!open || !element) return;
@@ -34,7 +36,7 @@ export default function AmbreenMobileMenu({ open, onClose }: { open: boolean; on
       </div>
       <nav aria-label="Portfolio sections" className="flex flex-col gap-1 py-8">
         <Link href="/" onClick={onClose} className="mb-4 rounded-md border border-border px-3 py-3 text-base font-semibold text-accent hover:bg-secondary focus-visible:outline-2 focus-visible:outline-accent">← Back to AAYI Tech</Link>
-        {navItems.map(([name, href]) => <a key={href} href={href} onClick={onClose} className="rounded-md px-3 py-3 text-xl font-medium hover:bg-secondary focus-visible:outline-2 focus-visible:outline-accent">{name}</a>)}
+        {navItems.map(([name, href]) => <Link key={href} href={href.startsWith("/") ? href : `${pathname === "/ambreen" ? "" : "/ambreen"}${href}`} onClick={onClose} className="rounded-md px-3 py-3 text-xl font-medium hover:bg-secondary focus-visible:outline-2 focus-visible:outline-accent">{name}</Link>)}
       </nav>
       <a href="/ambreen/Ambreen_Fatima_CV.pdf" download className="inline-flex rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">Download resume</a>
     </dialog>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Menu, Moon, Sun } from "lucide-react";
@@ -10,16 +11,17 @@ import { Button } from "@/components/ui/button";
 import AmbreenMobileMenu from "./AmbreenMobileMenu";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Expertise", href: "#expertise" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Tech Stack", href: "#tech-stack" },
-  { name: "Education", href: "#education" },
+  { name: "About", href: "/ambreen#about" },
+  { name: "Expertise", href: "/ambreen#expertise" },
+  { name: "Experience", href: "/ambreen#experience" },
+  { name: "Projects", href: "/ambreen/projects" },
+  { name: "Tech Stack", href: "/ambreen#tech-stack" },
+  { name: "Education", href: "/ambreen#education" },
 ];
 
 export default function AmbreenNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const darkMode = theme === "dark";
 
@@ -95,7 +97,7 @@ export default function AmbreenNavbar() {
 
           {/* Let's Talk */}
           <Link
-            href="#contact"
+            href={pathname === "/ambreen" ? "#contact" : "/ambreen#contact"}
             className="hidden rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-accent hover:text-background hover:shadow-lg lg:flex"
           >
             Let&apos;s Talk

@@ -1,16 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import Projects from "@/components/sections/projects/Projects";
+import { redirect } from "next/navigation";
 
-export default function projects() {
-  return (
-    <>
-      <Navbar />
-
-      <main className="bg-black text-white pt-20">
-        <Projects/>
-      </main>
-
-    </>
-  );
-}
+export default function ProjectsRedirect() { redirect("/ambreen/projects"); }

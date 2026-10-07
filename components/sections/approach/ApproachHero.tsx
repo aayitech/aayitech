@@ -69,7 +69,7 @@ export default function ApproachHero() {
             </Link>
 
             <Link
-              href="/projects"
+              href="/ambreen/projects"
               className="group inline-flex items-center gap-2 rounded-full border border-border bg-card px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:border-accent hover:bg-secondary hover:text-accent"
             >
               View My Work

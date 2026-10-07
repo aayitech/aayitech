@@ -20,6 +20,26 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## AAYI TECH Hub setup
+
+The root site is the AAYI TECH tools hub. Ambreen's existing portfolio and its project, service, about, approach, and technology pages live under `/ambreen` (for example `/ambreen/projects`). Previous top-level portfolio URLs redirect to their matching Ambreen pages.
+
+### Local services
+
+Copy `.env.example` to `.env.local` and configure the server-only environment variables:
+
+- `DATABASE_URL`: PostgreSQL connection string. Railway's Postgres service exposes this variable; link it to the web service with a Railway reference variable.
+- `DATABASE_SSL`: set to `true` only when the database connection requires TLS.
+- `AUTH_SECRET`: a unique random secret of at least 32 characters for signing login sessions.
+- `GROQ_API_KEY`: enables the SEO research generator and AAYI site assistant. The key stays on the server. Provider availability and limits depend on the selected Groq account/model.
+- `ALPHA_VANTAGE_API_KEY`: enables stock quote lookups. Without it, the site explains that quotes are not configured.
+
+The first account request creates the `aayi_users` and `aayi_keyword_reports` tables in the configured database. Passwords are stored as salted scrypt hashes. Signed-in keyword reports are associated with the account. Crypto market direction uses Binance public market data and does not need an account or API key.
+
+In Railway, add a PostgreSQL service, reference its `DATABASE_URL` from the Next.js service, and set `AUTH_SECRET`, `GROQ_API_KEY`, and optionally `ALPHA_VANTAGE_API_KEY` in the Next.js service's Variables tab. Set `DATABASE_SSL=true` only if the connection requires TLS. Configure secrets in Railway rather than committing them to the repository.
+
+The affiliate page currently provides the disclosure and category structure; partner recommendations and tracked links have not been added yet.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

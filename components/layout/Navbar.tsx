@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,18 +10,25 @@ import { Button } from "@/components/ui/button";
 import MobileMenu from "./MobileMenu";
 
 const navItems = [
-  { name: "Tools", href: "/#tools" },
-  { name: "Why AAYI", href: "/#why" },
+  { name: "SEO Lab", href: "/seo" },
+  { name: "Markets", href: "/markets/crypto" },
+  { name: "AI Assistant", href: "/assistant" },
+  { name: "Affiliates", href: "/affiliates" },
   { name: "Ambreen", href: "/ambreen", featured: true },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const darkMode = theme === "dark";
 
-  if (pathname === "/jamil" || pathname === "/ambreen" || pathname.startsWith("/mustansar") || pathname.startsWith("/adil")) return null;
+  useEffect(() => {
+    fetch("/api/auth/me").then((response) => response.json()).then((result) => setSignedIn(Boolean(result.user))).catch(() => setSignedIn(false));
+  }, []);
+
+  if (pathname === "/jamil" || pathname.startsWith("/ambreen") || pathname.startsWith("/mustansar") || pathname.startsWith("/adil")) return null;
 
   return (
     <>
@@ -48,7 +55,7 @@ export default function Navbar() {
     </p>
 
     <p className="mt-0.5 text-[8px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-      USEFUL TOOLS • MADE WITH CARE
+      TOOLS • INSIGHTS • IDEAS
     </p>
   </div>
 </Link>
@@ -95,10 +102,10 @@ export default function Navbar() {
 
             {/* Get Started */}
             <Link
-              href="/#tools"
+              href={signedIn ? "/account" : "/signup"}
               className="hidden rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-accent hover:text-background hover:shadow-lg lg:flex"
             >
-              Explore tools
+              {signedIn ? "My AAYI" : "Join AAYI"}
             </Link>
 
             {/* Mobile Menu */}

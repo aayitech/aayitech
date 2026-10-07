@@ -16,8 +16,11 @@ interface MobileMenuProps {
 }
 
 const navLinks = [
-  { label: "Free tools", href: "/#tools" },
-  { label: "Why AAYI", href: "/#why" },
+  { label: "SEO keyword lab", href: "/seo" },
+  { label: "Stock market", href: "/markets/stocks" },
+  { label: "Crypto pulse", href: "/markets/crypto" },
+  { label: "AI site assistant", href: "/assistant" },
+  { label: "Affiliate picks", href: "/affiliates" },
   { label: "Ambreen's Portfolio", href: "/ambreen" },
 ];
 
@@ -98,14 +101,14 @@ AAYI<span className="text-accent">/TECH</span>              </Link>
 
             {/* CTA */}
             <Link
-              href="/contact"
+              href="/signup"
               onClick={onClose}
               className="mt-8 flex items-center justify-center rounded-xl bg-primary
 text-primary-foreground
 hover:bg-accent
 hover:text-background px-6 py-4 font-semibold transition"
             >
-              Explore free tools
+              Create a free account
             </Link>
 
             {/* Social */}

@@ -1,16 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import Approach from "@/components/sections/approach/Approach";
+import { redirect } from "next/navigation";
 
-export default function approach() {
-  return (
-    <>
-      <Navbar />
-
-      <main className="bg-black text-white pt-20">
-        <Approach />
-      </main>
-
-    </>
-  );
-}
+export default function ApproachRedirect() { redirect("/ambreen/approach"); }

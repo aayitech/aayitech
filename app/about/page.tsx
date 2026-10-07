@@ -1,15 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import About from "@/components/sections/about/About";
+import { redirect } from "next/navigation";
 
-export default function AboutPage() {
-  return (
-    <>
-      <Navbar />
-<main className="bg-black text-white pt-20">
-        <About />
-          
-</main>
-    </>
-  );
-}
+export default function AboutRedirect() { redirect("/ambreen/about"); }

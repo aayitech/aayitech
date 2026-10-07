@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: Props) {
       className="group relative overflow-hidden rounded-3xl border border-border bg-card backdrop-blur-xl"
     >
       {/* Image */}
-      <Link href={`/projects/${project.slug}`}>
+      <Link href={`/ambreen/projects/${project.slug}`}>
         <div className="relative h-64 overflow-hidden">
           <Image
             src={project.image}
@@ -47,7 +47,7 @@ export default function ProjectCard({ project }: Props) {
       <div className="space-y-5 p-6">
         <div>
           {/* Clickable Title */}
-          <Link href={`/projects/${project.slug}`}>
+          <Link href={`/ambreen/projects/${project.slug}`}>
             <h3 className="mb-2 text-2xl font-bold text-foreground transition-colors duration-300 hover:text-accent">
               {project.title}
             </h3>
@@ -73,7 +73,7 @@ export default function ProjectCard({ project }: Props) {
         {/* Buttons */}
         <div className="flex flex-wrap gap-3">
           <Link
-            href={`/projects/${project.slug}`}
+            href={`/ambreen/projects/${project.slug}`}
             className="
               group
               flex

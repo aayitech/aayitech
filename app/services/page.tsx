@@ -1,9 +1,3 @@
-import Services from "@/components/sections/services/Services";
+import { redirect } from "next/navigation";
 
-export default function ServicesPage() {
-  return (
-      <main className="bg-background pt-20 text-foreground">
-        <Services />
-      </main>
-  );
-}
+export default function ServicesRedirect() { redirect("/ambreen/services"); }

@@ -25,7 +25,7 @@ export default function ServiceCard({
   const Icon = iconMap[icon];
 
   return (
-    <Link href={`/services/${slug}`} className="block">
+    <Link href={`/ambreen/services/${slug}`} className="block">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
