@@ -20,9 +20,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AAYI TECH | HubSpot & GoHighLevel CRM Automation",
+  title: "AAYI TECH | Free Tools for Everyday Tasks",
   description:
-    "CRM automation for HubSpot and GoHighLevel, plus custom Next.js websites, portals, and integrations that reduce manual work.",
+    "Small, useful tools for everyday work. Clean up text, count words, calculate discounts, and split bills for free with AAYI TECH.",
 };
 
 export default function RootLayout({

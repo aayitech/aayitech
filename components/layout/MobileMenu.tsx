@@ -16,14 +16,9 @@ interface MobileMenuProps {
 }
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-{ label: "Technologies", href: "/technologies" },
-  { label: "Projects", href: "/projects" },
-  { label: "Approach", href: "/approach" },
+  { label: "Free tools", href: "/#tools" },
+  { label: "Why AAYI", href: "/#why" },
   { label: "Ambreen's Portfolio", href: "/ambreen" },
-  { label: "Contact", href: "/contact" },
 ];
 
 const socials = [
@@ -110,7 +105,7 @@ text-primary-foreground
 hover:bg-accent
 hover:text-background px-6 py-4 font-semibold transition"
             >
-              Let&apos;s Talk
+              Explore free tools
             </Link>
 
             {/* Social */}

@@ -10,11 +10,8 @@ import { Button } from "@/components/ui/button";
 import MobileMenu from "./MobileMenu";
 
 const navItems = [
-  { name: "Services", href: "/services" },
-  { name: "Technologies", href: "/technologies" },
-  { name: "Projects", href: "/projects" },
-  { name: "Approach", href: "/approach" },
-  { name: "About", href: "/about" },
+  { name: "Tools", href: "/#tools" },
+  { name: "Why AAYI", href: "/#why" },
   { name: "Ambreen", href: "/ambreen", featured: true },
 ];
 
@@ -51,7 +48,7 @@ export default function Navbar() {
     </p>
 
     <p className="mt-0.5 text-[8px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-      CRM AUTOMATION • NEXT.JS
+      USEFUL TOOLS • MADE WITH CARE
     </p>
   </div>
 </Link>
@@ -98,10 +95,10 @@ export default function Navbar() {
 
             {/* Get Started */}
             <Link
-              href="/contact"
+              href="/#tools"
               className="hidden rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-accent hover:text-background hover:shadow-lg lg:flex"
             >
-              Get Started
+              Explore tools
             </Link>
 
             {/* Mobile Menu */}

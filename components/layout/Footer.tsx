@@ -12,12 +12,9 @@ import {
 } from "react-icons/fa6";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
+  { label: "Free tools", href: "/#tools" },
+  { label: "Why AAYI", href: "/#why" },
   { label: "Ambreen", href: "/ambreen" },
-  { label: "Contact", href: "/contact" },
 ];
 
 const socials = [
@@ -60,7 +57,7 @@ AAYI<span className="text-accent">/TECH</span>
             </Link>
 
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
-              HubSpot and GoHighLevel CRM automation, integrations, and custom Next.js experiences that reduce manual work.
+              Small, free tools that make everyday tasks a little easier. Built with care by AAYI TECH.
             </p>
           </motion.div>
 
