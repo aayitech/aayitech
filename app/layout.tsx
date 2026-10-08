@@ -22,7 +22,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "AAYI TECH | Useful Digital Tools",
   description:
-    "Explore AAYI TECH's SEO keyword research, simple stock and crypto market views, AI site assistant, and carefully selected affiliate tools.",
+    "Explore AAYI TECH's local weather and headlines, simple stock and crypto market views, AI site assistant, and carefully selected affiliate tools.",
 };
 
 export default function RootLayout({

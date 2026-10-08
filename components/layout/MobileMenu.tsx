@@ -17,7 +17,7 @@ interface MobileMenuProps {
 }
 
 const navLinks = [
-  { label: "SEO keyword lab", href: "/seo" },
+  { label: "Weather & News", href: "/weather" },
   { label: "Stock market", href: "/markets/stocks" },
   { label: "Crypto pulse", href: "/markets/crypto" },
   { label: "AI site assistant", href: "/assistant" },

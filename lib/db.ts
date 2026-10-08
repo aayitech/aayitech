@@ -35,15 +35,6 @@ export async function ensureSchema() {
           password_hash TEXT NOT NULL,
           created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
         );
-        CREATE TABLE IF NOT EXISTS aayi_keyword_reports (
-          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-          user_id UUID NOT NULL REFERENCES aayi_users(id) ON DELETE CASCADE,
-          topic TEXT NOT NULL,
-          report JSONB NOT NULL,
-          created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-        );
-        CREATE INDEX IF NOT EXISTS aayi_keyword_reports_user_created_idx
-          ON aayi_keyword_reports (user_id, created_at DESC);
       `);
     })().catch((error) => {
       globalThis.aayiSchemaReady = undefined;

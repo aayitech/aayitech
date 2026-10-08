@@ -6,7 +6,7 @@ import styles from "@/components/hub/hub.module.css";
 export const metadata: Metadata = { title: "AAYI Picks | Honest Tool Recommendations", description: "A forthcoming directory of useful software and digital products, with transparent affiliate disclosures." };
 
 const categories = [
-  { title: "SEO & content", body: "Research and publishing tools that help small teams create better content.", icon: BookOpenCheck },
+  { title: "Writing & content", body: "Research and publishing tools that help small teams create better content.", icon: BookOpenCheck },
   { title: "Websites & hosting", body: "Practical services for launching a site and keeping it online.", icon: BadgeCheck },
   { title: "Work & automation", body: "Tools that reduce repetitive admin and help everyday work flow.", icon: HeartHandshake },
 ];

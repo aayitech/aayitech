@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import MobileMenu from "./MobileMenu";
 
 const navItems = [
-  { name: "SEO Lab", href: "/seo" },
+  { name: "Weather & News", href: "/weather" },
   { name: "Markets", href: "/markets/crypto" },
   { name: "AI Assistant", href: "/assistant" },
   { name: "Affiliates", href: "/affiliates" },

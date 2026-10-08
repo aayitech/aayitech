@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa6";
 
 const navLinks = [
-  { label: "SEO Lab", href: "/seo" },
+  { label: "Weather & News", href: "/weather" },
   { label: "Stocks", href: "/markets/stocks" },
   { label: "Crypto", href: "/markets/crypto" },
   { label: "AI Assistant", href: "/assistant" },
@@ -60,7 +60,7 @@ AAYI<span className="text-accent">/TECH</span>
             </Link>
 
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
-              Practical tools for SEO, market insights, and everyday digital work. Built with care by AAYI TECH.
+              Practical tools for local weather, market insights, and everyday digital work. Built with care by AAYI TECH.
             </p>
           </motion.div>
 
