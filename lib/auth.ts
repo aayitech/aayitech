@@ -81,13 +81,28 @@ export async function getSessionUser() {
   }
 }
 
-export function authErrorResponse(error: unknown) {
+export function authErrorResponse(error: unknown, operation = "request") {
   const message = error instanceof Error ? error.message : "";
+  const code = typeof error === "object" && error !== null && "code" in error && typeof error.code === "string"
+    ? error.code
+    : undefined;
+
+  // Keep enough information to diagnose Vercel/Railway connectivity without logging
+  // submitted credentials, email addresses, or the DATABASE_URL itself.
+  console.error(`[auth:${operation}] request failed`, {
+    name: error instanceof Error ? error.name : "UnknownError",
+    code,
+    message: message.replace(/postgres(?:ql)?:\/\/[^\s@]+:[^\s@]+@/gi, "postgresql://[redacted]@"),
+  });
+
   if (message === "DATABASE_NOT_CONFIGURED") {
     return Response.json({ message: "Accounts are not available yet. The site owner needs to connect Railway Postgres using DATABASE_URL." }, { status: 503 });
   }
   if (message === "AUTH_SECRET_NOT_CONFIGURED") {
     return Response.json({ message: "Accounts are not available yet. The site owner needs to set AUTH_SECRET." }, { status: 503 });
+  }
+  if (code && (code.startsWith("08") || /^(ECONN|ETIMEDOUT|ENOTFOUND|EHOST|ERR_TLS|SELF_SIGNED)/.test(code))) {
+    return Response.json({ message: "The database connection failed. Check DATABASE_URL and DATABASE_SSL on the platform serving this site." }, { status: 503 });
   }
   return Response.json({ message: "We could not complete that request. Please try again." }, { status: 500 });
 }

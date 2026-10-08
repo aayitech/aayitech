@@ -48,6 +48,6 @@ export async function POST(request: Request) {
     if (typeof error === "object" && error !== null && "code" in error && error.code === "23505") {
       return NextResponse.json({ message: "An account with that email already exists. Try signing in." }, { status: 409 });
     }
-    return authErrorResponse(error);
+    return authErrorResponse(error, "signup");
   }
 }

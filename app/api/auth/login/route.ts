@@ -26,6 +26,6 @@ export async function POST(request: Request) {
     await setSessionCookie(user.id);
     return NextResponse.json({ user: { id: user.id, full_name: user.full_name, email: user.email, created_at: user.created_at } });
   } catch (error) {
-    return authErrorResponse(error);
+    return authErrorResponse(error, "login");
   }
 }
