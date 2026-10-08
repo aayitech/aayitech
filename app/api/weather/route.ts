@@ -1,5 +1,14 @@
 export const runtime = "nodejs";
 
+type ForecastPoint = {
+  time: string;
+  data?: {
+    instant?: { details?: Record<string, number> };
+    next_1_hours?: { summary?: { symbol_code?: string }; details?: { precipitation_amount?: number } };
+    next_6_hours?: { summary?: { symbol_code?: string } };
+  };
+};
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const latitude = Number(searchParams.get("lat"));
@@ -31,13 +40,13 @@ export async function GET(request: Request) {
       return Response.json({ message: "Weather data is temporarily unavailable. Please try again shortly." }, { status: 502 });
     }
 
-    const payload = await response.json();
+    const payload = await response.json() as { properties?: { timeseries?: ForecastPoint[] } };
     const series = payload?.properties?.timeseries;
     if (!Array.isArray(series) || series.length === 0) {
       return Response.json({ message: "No forecast is available for this location." }, { status: 502 });
     }
 
-    const hours = series.slice(0, 8).map((item: any) => ({
+    const hours = series.slice(0, 8).map((item) => ({
       time: item.time,
       temperature: item.data?.instant?.details?.air_temperature ?? null,
       symbol: item.data?.next_1_hours?.summary?.symbol_code ?? item.data?.next_6_hours?.summary?.symbol_code ?? null,

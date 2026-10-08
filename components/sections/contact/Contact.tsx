@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { CalendarDays } from "lucide-react";
 
 import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
@@ -40,7 +42,7 @@ export default function Contact() {
           </span>
 
           <h2 className="mt-4 text-4xl font-bold text-foreground md:text-5xl">
-            Let's Fix Your
+            Let&apos;s Fix Your
             <span className="text-accent"> CRM Workflow</span>
           </h2>
 
@@ -50,6 +52,9 @@ export default function Contact() {
             help you identify the right automation, integration, or Next.js
             solution.
           </p>
+          <Link href="https://calendar.app.google/kAnt9yvmMNWXwHQ29" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-accent hover:text-background">
+            <CalendarDays className="h-4 w-4" /> Book a meeting
+          </Link>
         </motion.div>
 
         {/* Main Layout */}

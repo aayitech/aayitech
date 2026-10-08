@@ -13,7 +13,7 @@ type WeatherData = {
   attribution: string;
 };
 type Article = { title: string; url: string; publisher: string; publishedAt: string | null; country: string | null };
-type Category = "world" | "business" | "technology" | "science";
+type Category = "world" | "business" | "technology" | "science" | "entertainment" | "sports";
 
 const cities: City[] = [
   { name: "Karachi", country: "Pakistan", latitude: 24.8607, longitude: 67.0011 },
@@ -31,6 +31,8 @@ const categories: { id: Category; label: string }[] = [
   { id: "business", label: "Business" },
   { id: "technology", label: "Technology" },
   { id: "science", label: "Science" },
+  { id: "entertainment", label: "Entertainment" },
+  { id: "sports", label: "Sports" },
 ];
 
 function description(symbol: string | null) {
@@ -70,7 +72,7 @@ function publishedTime(value: string | null) {
   return Number.isNaN(date.getTime()) ? "Latest" : date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 }
 
-export default function WeatherNews() {
+export default function WeatherNews({ mode = "all" }: { mode?: "all" | "weather" | "news" }) {
   const [city, setCity] = useState<City>(cities[0]);
   const [locationLabel, setLocationLabel] = useState(`${cities[0].name}, ${cities[0].country}`);
   const [weather, setWeather] = useState<WeatherData | null>(null);
@@ -100,13 +102,16 @@ export default function WeatherNews() {
   }, []);
 
   useEffect(() => {
-    void loadWeather(cities[0].latitude, cities[0].longitude, `${cities[0].name}, ${cities[0].country}`);
-  }, [loadWeather]);
+    if (mode === "news") return;
+    const timer = window.setTimeout(() => void loadWeather(cities[0].latitude, cities[0].longitude, `${cities[0].name}, ${cities[0].country}`), 0);
+    return () => window.clearTimeout(timer);
+  }, [loadWeather, mode]);
 
   useEffect(() => {
+    if (mode === "weather") {
+      return;
+    }
     const controller = new AbortController();
-    setNewsLoading(true);
-    setNewsError("");
     fetch(`/api/news?category=${category}`, { signal: controller.signal })
       .then(async (response) => {
         const result = await response.json();
@@ -119,7 +124,7 @@ export default function WeatherNews() {
       })
       .finally(() => setNewsLoading(false));
     return () => controller.abort();
-  }, [category]);
+  }, [category, mode]);
 
   function detectLocation() {
     setWeatherError("");
@@ -145,8 +150,8 @@ export default function WeatherNews() {
     void loadWeather(selected.latitude, selected.longitude, `${selected.name}, ${selected.country}`);
   }
 
-  return <div className={styles.weatherNews}>
-    <section className={styles.weatherPanel} aria-label="Local weather forecast">
+  return <div className={`${styles.weatherNews} ${mode === "all" ? "" : styles.singleColumn}`}>
+    {mode !== "news" && <section className={styles.weatherPanel} aria-label="Local weather forecast">
       <div className={styles.panelHeader}>
         <div><span className={styles.kicker}>WEATHER NEAR YOU</span><h2>{locationLabel}</h2><p>Current conditions and the next few hours.</p></div>
         <div className={styles.locationControls}>
@@ -168,13 +173,13 @@ export default function WeatherNews() {
         <div className={styles.weatherSource}>Updated {new Date(weather.updatedAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} · <a href="https://api.met.no/" target="_blank" rel="noreferrer">MET Norway forecast data</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a></div>
       </> : <div className={styles.weatherEmpty}><p>Choose a city or allow location access to see the local forecast.</p></div>}
       {weatherError && <p role="alert" className={styles.inlineError}>{weatherError}</p>}
-    </section>
+    </section>}
 
-    <section className={styles.newsPanel} aria-label="Recent news headlines">
+    {mode !== "weather" && <section className={styles.newsPanel} aria-label="Recent news headlines">
       <div className={styles.newsHeader}><div><span className={styles.kicker}>A QUICK DAILY BRIEF</span><h2>Headlines worth a look.</h2><p>Read the headline here; open the publisher for the full story.</p></div></div>
-      <div className={styles.categoryTabs} role="tablist" aria-label="News category">{categories.map((item) => <button key={item.id} type="button" role="tab" aria-selected={category === item.id} className={category === item.id ? styles.activeTab : ""} onClick={() => setCategory(item.id)}>{item.label}</button>)}</div>
+      <div className={styles.categoryTabs} role="tablist" aria-label="News category">{categories.map((item) => <button key={item.id} type="button" role="tab" aria-selected={category === item.id} className={category === item.id ? styles.activeTab : ""} onClick={() => { setNewsLoading(true); setNewsError(""); setCategory(item.id); }}>{item.label}</button>)}</div>
       {newsLoading ? <div className={styles.newsLoading}><RefreshCw size={16} className={styles.spinning} /> Loading recent headlines…</div> : newsError ? <p role="alert" className={styles.inlineError}>{newsError}</p> : articles.length ? <div className={styles.articleList}>{articles.map((article, index) => <article className={styles.article} key={`${article.url}-${index}`}><div className={styles.articleMeta}><span>{article.publisher}</span><time>{publishedTime(article.publishedAt)}</time></div><a href={article.url} target="_blank" rel="noopener noreferrer"><h3>{article.title}<ExternalLink size={13} /></h3></a></article>)}</div> : <div className={styles.newsEmpty}>No recent headlines in this category. Try another topic.</div>}
       <div className={styles.newsAttribution}>Headlines via <a href="https://www.gdeltproject.org/" target="_blank" rel="noreferrer">The GDELT Project</a>. Stories and reporting belong to their original publishers.</div>
-    </section>
+    </section>}
   </div>;
 }

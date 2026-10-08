@@ -1,11 +1,14 @@
 const categories = {
-  world: "world OR global",
-  business: "business OR economy",
-  technology: "technology OR tech",
-  science: "science OR research",
+  world: "(world OR global)",
+  business: "(business OR economy)",
+  technology: "(technology OR tech)",
+  science: "(science OR research)",
+  entertainment: "(entertainment OR film OR music OR television OR celebrity)",
+  sports: "(sports OR football OR cricket OR tennis)",
 } as const;
 
 type Category = keyof typeof categories;
+type GdeltArticle = { title?: unknown; url?: unknown; domain?: unknown; seendate?: unknown; sourcecountry?: unknown };
 
 export const runtime = "nodejs";
 
@@ -35,19 +38,19 @@ export async function GET(request: Request) {
       return Response.json({ message: "Headlines are temporarily unavailable. Please try again shortly." }, { status: 502 });
     }
 
-    const payload = await response.json();
-    const articles = Array.isArray(payload?.articles) ? payload.articles : [];
+    const payload = await response.json() as { articles?: unknown };
+    const articles: unknown[] = Array.isArray(payload.articles) ? payload.articles : [];
     return Response.json({
       category,
       articles: articles
-        .filter((article: any) => typeof article.title === "string" && typeof article.url === "string" && /^https?:\/\//i.test(article.url))
+        .filter((article): article is GdeltArticle => typeof article === "object" && article !== null && "title" in article && "url" in article && typeof article.title === "string" && typeof article.url === "string" && /^https?:\/\//i.test(article.url))
         .slice(0, 18)
-        .map((article: any) => ({
+        .map((article) => ({
           title: article.title,
           url: article.url,
           publisher: typeof article.domain === "string" ? article.domain : "Original publisher",
-          publishedAt: article.seendate ?? null,
-          country: article.sourcecountry ?? null,
+          publishedAt: typeof article.seendate === "string" ? article.seendate : null,
+          country: typeof article.sourcecountry === "string" ? article.sourcecountry : null,
         })),
       attribution: "Headlines from the GDELT Project; articles belong to their publishers.",
     }, { headers: { "Cache-Control": "public, s-maxage=900, stale-while-revalidate=1800" } });

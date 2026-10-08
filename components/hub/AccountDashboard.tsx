@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight, CloudSun, LogOut, TrendingUp, Bitcoin } from "lucide-react";
+import { ArrowRight, CloudSun, LogOut, TrendingUp, Bitcoin, Newspaper } from "lucide-react";
 import styles from "./hub.module.css";
 
 type AccountUser = { full_name: string; email: string; created_at: string };
 
 const shortcuts = [
   { href: "/weather", label: "Weather & headlines", icon: CloudSun },
+  { href: "/news", label: "News topics", icon: Newspaper },
   { href: "/markets/stocks", label: "Stock market", icon: TrendingUp },
   { href: "/markets/crypto", label: "Crypto pulse", icon: Bitcoin },
 ];

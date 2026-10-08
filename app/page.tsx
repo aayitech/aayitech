@@ -3,7 +3,7 @@ import { ArrowRight, BarChart3, Bot, ChartNoAxesCombined, CircleDollarSign, Clou
 import styles from "./home.module.css";
 
 const tools = [
-  { href: "/weather", index: "01", label: "START WITH TODAY", title: "Weather & headlines", description: "Check your local forecast and browse a quick brief of recent world news.", icon: CloudSun, tag: "FREE PUBLIC DATA" },
+  { href: "/weather", index: "01", label: "START WITH TODAY", title: "Local weather", description: "Check the forecast near you or choose a city from the list.", icon: CloudSun, tag: "FREE PUBLIC DATA" },
   { href: "/markets/stocks", index: "02", label: "FOLLOW THE MARKETS", title: "Stock market", description: "A calmer view of the market with simple price and change summaries.", icon: BarChart3, tag: "MARKET SNAPSHOTS" },
   { href: "/markets/crypto", index: "03", label: "MAKE CRYPTO CLEARER", title: "Crypto pulse", description: "See which major coins are moving up or down over the last 24 hours.", icon: ChartNoAxesCombined, tag: "LIVE DATA" },
   { href: "/assistant", index: "04", label: "ASK AAYI", title: "AI site assistant", description: "Ask about AAYI tools, how they work, and where to find what you need.", icon: Bot, tag: "SITE HELPER" },
@@ -22,7 +22,7 @@ export default function Home() {
         </div>
         <div className={styles.heroVisual} aria-hidden="true">
           <div className={styles.visualOrbit} /><div className={styles.visualCore}><span>A</span><i /></div>
-          <div className={`${styles.floatCard} ${styles.weatherCard}`}><span className={styles.miniIcon}><CloudSun size={15} /></span><span><b>Weather & headlines</b><small>your local forecast, daily brief</small></span><span className={styles.miniArrow}>↗</span></div>
+          <div className={`${styles.floatCard} ${styles.weatherCard}`}><span className={styles.miniIcon}><CloudSun size={15} /></span><span><b>Local weather</b><small>your forecast, in one clear view</small></span><span className={styles.miniArrow}>↗</span></div>
           <div className={`${styles.floatCard} ${styles.marketCard}`}><span className={styles.marketMark}>↗</span><span><b>Markets, simplified</b><small>up · down · what it means</small></span></div>
           <div className={`${styles.floatCard} ${styles.aiCard}`}><span className={styles.aiMark}><Bot size={15} /></span><span><b>AAYI assistant</b><small>Here when you need a hand</small></span></div>
           <div className={styles.visualCaption}>A practical hub, built to grow.</div>

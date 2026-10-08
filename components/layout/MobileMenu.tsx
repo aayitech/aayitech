@@ -17,11 +17,14 @@ interface MobileMenuProps {
 }
 
 const navLinks = [
-  { label: "Weather & News", href: "/weather" },
+  { label: "Weather", href: "/weather" },
+  { label: "News", href: "/news" },
+  { label: "Learning community", href: "/learn" },
   { label: "Stock market", href: "/markets/stocks" },
   { label: "Crypto pulse", href: "/markets/crypto" },
   { label: "AI site assistant", href: "/assistant" },
   { label: "Affiliate picks", href: "/affiliates" },
+  { label: "Contact & book a meeting", href: "/ambreen/contact" },
   { label: "Ambreen's Portfolio", href: "/ambreen" },
 ];
 

@@ -12,11 +12,14 @@ import {
 } from "react-icons/fa6";
 
 const navLinks = [
-  { label: "Weather & News", href: "/weather" },
+  { label: "Weather", href: "/weather" },
+  { label: "News", href: "/news" },
+  { label: "Learn", href: "/learn" },
   { label: "Stocks", href: "/markets/stocks" },
   { label: "Crypto", href: "/markets/crypto" },
   { label: "AI Assistant", href: "/assistant" },
   { label: "Affiliates", href: "/affiliates" },
+  { label: "Contact", href: "/ambreen/contact" },
   { label: "Ambreen", href: "/ambreen" },
 ];
 
@@ -60,7 +63,7 @@ AAYI<span className="text-accent">/TECH</span>
             </Link>
 
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
-              Practical tools for local weather, market insights, and everyday digital work. Built with care by AAYI TECH.
+              Practical tools for local weather, current headlines, market insights, and learning together. Built with care by AAYI TECH.
             </p>
           </motion.div>
 
