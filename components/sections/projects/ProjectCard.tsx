@@ -14,9 +14,11 @@ import { Project } from "./types";
 
 interface Props {
   project: Project;
+  basePath?: string;
 }
 
-export default function ProjectCard({ project }: Props) {
+export default function ProjectCard({ project, basePath = "/ambreen/projects" }: Props) {
+  const projectHref = `${basePath}/${project.slug}`;
   return (
     <motion.article
       whileHover={{ y: -8 }}
@@ -24,7 +26,7 @@ export default function ProjectCard({ project }: Props) {
       className="group relative overflow-hidden rounded-3xl border border-border bg-card backdrop-blur-xl"
     >
       {/* Image */}
-      <Link href={`/ambreen/projects/${project.slug}`}>
+      <Link href={projectHref}>
         <div className="relative h-64 overflow-hidden">
           <Image
             src={project.image}
@@ -47,7 +49,7 @@ export default function ProjectCard({ project }: Props) {
       <div className="space-y-5 p-6">
         <div>
           {/* Clickable Title */}
-          <Link href={`/ambreen/projects/${project.slug}`}>
+          <Link href={projectHref}>
             <h3 className="mb-2 text-2xl font-bold text-foreground transition-colors duration-300 hover:text-accent">
               {project.title}
             </h3>
@@ -73,7 +75,7 @@ export default function ProjectCard({ project }: Props) {
         {/* Buttons */}
         <div className="flex flex-wrap gap-3">
           <Link
-            href={`/ambreen/projects/${project.slug}`}
+            href={projectHref}
             className="
               group
               flex

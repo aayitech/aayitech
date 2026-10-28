@@ -8,10 +8,12 @@ import { projects } from "./projects.data";
 
 interface RelatedProjectsProps {
   project: Project;
+  basePath?: string;
 }
 
 export default function RelatedProjects({
   project,
+  basePath = "/ambreen/projects",
 }: RelatedProjectsProps) {
   const relatedProjects = projects
     .filter(
@@ -64,7 +66,7 @@ export default function RelatedProjects({
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
             >
-              <ProjectCard project={relatedProject} />
+              <ProjectCard project={relatedProject} basePath={basePath} />
             </motion.div>
           ))}
         </motion.div>

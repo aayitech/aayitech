@@ -9,6 +9,7 @@ import { iconMap } from "@/lib/iconMap";
 
 interface ServiceCardProps {
   slug: string;
+  basePath?: string;
   title: string;
   description: string;
   icon: keyof typeof iconMap;
@@ -17,6 +18,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({
   slug,
+  basePath = "/ambreen/services",
   title,
   description,
   icon,
@@ -25,7 +27,7 @@ export default function ServiceCard({
   const Icon = iconMap[icon];
 
   return (
-    <Link href={`/ambreen/services/${slug}`} className="block">
+    <Link href={`${basePath}/${slug}`} className="block">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

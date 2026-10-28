@@ -1,3 +1,5 @@
-import { redirect } from "next/navigation";
+import Contact from "@/components/sections/contact/Contact";
 
-export default function ContactRedirect() { redirect("/ambreen/contact"); }
+export default function ContactPage() {
+  return <main className="bg-background pt-20 text-foreground"><Contact /></main>;
+}

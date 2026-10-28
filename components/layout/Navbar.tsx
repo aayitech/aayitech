@@ -10,11 +10,13 @@ import { Button } from "@/components/ui/button";
 import MobileMenu from "./MobileMenu";
 
 const navItems = [
-  { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Technologies", href: "/technologies" },
   { name: "Projects", href: "/projects" },
   { name: "Approach", href: "/approach" },
-  { name: "Contact", href: "/contact", featured: true },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+  { name: "Ambreen", href: "/ambreen", featured: true },
 ];
 
 export default function Navbar() {
@@ -28,7 +30,7 @@ export default function Navbar() {
     fetch("/api/auth/me").then((response) => response.json()).then((result) => setSignedInName(typeof result.user?.full_name === "string" ? result.user.full_name.trim().split(/\s+/)[0] : "")).catch(() => setSignedInName(""));
   }, [pathname]);
 
-  if (pathname === "/jamil" || pathname.startsWith("/ambreen") || pathname.startsWith("/mustansar") || pathname.startsWith("/adil")) return null;
+  if (pathname === "/jamil" || pathname.startsWith("/ambreen") || pathname.startsWith("/mustansar") || pathname.startsWith("/adil") || pathname.startsWith("/shahana")) return null;
 
   return (
     <>

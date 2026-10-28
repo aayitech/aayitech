@@ -17,11 +17,14 @@ interface MobileMenuProps {
 }
 
 const navLinks = [
-  { label: "About", href: "/about" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Technologies", href: "/technologies" },
   { label: "Projects", href: "/projects" },
   { label: "Approach", href: "/approach" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Ambreen's Portfolio", href: "/ambreen" },
 ];
 
 const socials = [
