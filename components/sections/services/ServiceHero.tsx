@@ -11,6 +11,8 @@ interface ServiceHeroProps {
   highlight: string;
   description: string;
   icon: keyof typeof iconMap;
+  contactHref?: string;
+  projectsHref?: string;
 }
 
 export default function ServiceHero({
@@ -19,6 +21,8 @@ export default function ServiceHero({
   highlight,
   description,
   icon,
+  contactHref = "/ambreen/contact",
+  projectsHref = "/ambreen/projects",
 }: ServiceHeroProps) {
   const Icon = iconMap[icon];
 
@@ -78,14 +82,14 @@ export default function ServiceHero({
             className="mt-12 flex flex-col justify-center gap-5 sm:flex-row"
           >
             <Link
-              href="/ambreen/contact"
+              href={contactHref}
               className="inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 font-semibold text-primary-foreground transition hover:bg-accent hover:text-background"
             >
               Book a Consultation
             </Link>
 
             <Link
-              href="/ambreen/projects"
+              href={projectsHref}
               className="group inline-flex items-center justify-center rounded-xl border border-border bg-card px-8 py-4 font-semibold text-foreground transition hover:border-accent hover:bg-secondary"
             >
               View Projects

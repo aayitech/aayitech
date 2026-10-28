@@ -12,11 +12,14 @@ import {
 } from "react-icons/fa6";
 
 const navLinks = [
-  { label: "About", href: "/about" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Technologies", href: "/technologies" },
   { label: "Projects", href: "/projects" },
   { label: "Approach", href: "/approach" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Ambreen", href: "/ambreen" },
 ];
 
 const socials = [
@@ -40,7 +43,7 @@ const socials = [
 
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname === "/jamil" || pathname.startsWith("/ambreen") || pathname.startsWith("/mustansar") || pathname.startsWith("/adil")) return null;
+  if (pathname === "/jamil" || pathname.startsWith("/ambreen") || pathname.startsWith("/mustansar") || pathname.startsWith("/adil") || pathname.startsWith("/shahana")) return null;
 
   return (
     <footer className="border-t border-border/60 bg-background">

@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import Timeline from "./Timeline";
 
-export default function Approach() {
+export default function Approach({ contactHref = "/ambreen/contact" }: { contactHref?: string }) {
   return (
     <section
       id="approach"
@@ -127,7 +127,7 @@ export default function Approach() {
           </p>
 
           <Link
-            href="#contact"
+            href={contactHref}
             className="
               group
               mt-10

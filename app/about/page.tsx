@@ -1,3 +1,5 @@
-import { redirect } from "next/navigation";
+import About from "@/components/sections/about/About";
 
-export default function AboutRedirect() { redirect("/ambreen/about"); }
+export default function AboutPage() {
+  return <main className="bg-background pt-20 text-foreground"><About /></main>;
+}

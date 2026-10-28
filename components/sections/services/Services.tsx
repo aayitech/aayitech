@@ -6,7 +6,7 @@ import { services } from "@/data/services";
 import ServiceBackground from "./ServiceBackground";
 import ServiceCard from "./ServiceCard";
 
-export default function Services() {
+export default function Services({ basePath = "/ambreen/services" }: { basePath?: string }) {
   return (
     <section
       id="services"
@@ -54,6 +54,7 @@ export default function Services() {
             <ServiceCard
               key={service.slug}
               slug={service.slug}
+              basePath={basePath}
               title={service.shortTitle}
               description={service.description}
               icon={service.icon}

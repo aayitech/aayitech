@@ -10,9 +10,9 @@ import HomeAbout from "@/components/sections/home-about/HomeAbout";
 import HomeProfile from "@/components/sections/home-profile/HomeProfile";
 
 export const metadata: Metadata = {
-  title: "Ambreen Fatima | HubSpot & GoHighLevel Automation Specialist",
+  title: "AAYI TECH | CRM Automation Portfolio",
   description:
-    "HubSpot and GoHighLevel CRM automation, integrations, reporting, and connected Next.js development by Ambreen Fatima.",
+    "See AAYI TECH's HubSpot and GoHighLevel automation work, services, projects, technologies, and approach.",
 };
 
 export default function Home() {

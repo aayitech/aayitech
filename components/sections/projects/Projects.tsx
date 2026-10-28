@@ -9,7 +9,7 @@ import ProjectFilters from "./ProjectFilters";
 
 import { projects, projectCategories } from "./projects.data";
 
-export default function Projects() {
+export default function Projects({ basePath = "/ambreen/projects" }: { basePath?: string }) {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const featuredProject = projects.find((project) => project.featured);
@@ -90,7 +90,7 @@ export default function Projects() {
                 duration: 0.35,
               }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} basePath={basePath} />
             </motion.div>
           ))}
         </motion.div>
