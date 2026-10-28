@@ -10,14 +10,11 @@ import { Button } from "@/components/ui/button";
 import MobileMenu from "./MobileMenu";
 
 const navItems = [
-  { name: "Weather", href: "/weather" },
-  { name: "News", href: "/news" },
-  { name: "Learn", href: "/learn" },
-  { name: "Markets", href: "/markets/crypto" },
-  { name: "AI Assistant", href: "/assistant" },
-  { name: "Affiliates", href: "/affiliates" },
-  { name: "Contact", href: "/ambreen/contact" },
-  { name: "Ambreen", href: "/ambreen", featured: true },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
+  { name: "Approach", href: "/approach" },
+  { name: "Contact", href: "/contact", featured: true },
 ];
 
 export default function Navbar() {
@@ -58,7 +55,7 @@ export default function Navbar() {
     </p>
 
     <p className="mt-0.5 text-[8px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-      TOOLS • INSIGHTS • IDEAS
+      CRM AUTOMATION • CONNECTED SYSTEMS
     </p>
   </div>
 </Link>
@@ -105,10 +102,10 @@ export default function Navbar() {
 
             {/* Get Started */}
             <Link
-              href={signedInName ? "/account" : "/signup"}
+              href={signedInName ? "/account" : "/contact"}
               className="hidden rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-accent hover:text-background hover:shadow-lg lg:flex"
             >
-              {signedInName ? `Welcome, ${signedInName}` : "Join AAYI"}
+      {signedInName ? `Welcome, ${signedInName}` : "Let’s talk"}
             </Link>
 
             {/* Mobile Menu */}

@@ -20,9 +20,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AAYI TECH | Useful Digital Tools",
+  title: "Ambreen Fatima | HubSpot & GoHighLevel Automation Specialist",
   description:
-    "Explore AAYI TECH's local weather and headlines, simple stock and crypto market views, AI site assistant, and carefully selected affiliate tools.",
+    "HubSpot and GoHighLevel CRM automation, integrations, reporting, and connected Next.js development by Ambreen Fatima.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 # AAYI TECH
 
-AAYI TECH is a practical digital tools hub. Ambreen's existing portfolio and project pages remain under `/ambreen` (for example `/ambreen/projects`). Previous top-level portfolio URLs redirect to their Ambreen pages.
+AAYI TECH is Ambreen Fatima's portfolio for HubSpot and GoHighLevel CRM automation, integrations, reporting, and custom Next.js development. The homepage presents her services, selected work, approach, and contact options. Detailed portfolio pages are also available under `/ambreen`.
 
 ## Tools
 

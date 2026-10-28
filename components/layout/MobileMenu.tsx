@@ -17,15 +17,11 @@ interface MobileMenuProps {
 }
 
 const navLinks = [
-  { label: "Weather", href: "/weather" },
-  { label: "News", href: "/news" },
-  { label: "Learning community", href: "/learn" },
-  { label: "Stock market", href: "/markets/stocks" },
-  { label: "Crypto pulse", href: "/markets/crypto" },
-  { label: "AI site assistant", href: "/assistant" },
-  { label: "Affiliate picks", href: "/affiliates" },
-  { label: "Contact & book a meeting", href: "/ambreen/contact" },
-  { label: "Ambreen's Portfolio", href: "/ambreen" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Approach", href: "/approach" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const socials = [
@@ -106,14 +102,14 @@ AAYI<span className="text-accent">/TECH</span>              </Link>
 
             {/* CTA */}
             <Link
-              href={signedInName ? "/account" : "/signup"}
+              href={signedInName ? "/account" : "/contact"}
               onClick={onClose}
               className="mt-8 flex items-center justify-center rounded-xl bg-primary
 text-primary-foreground
 hover:bg-accent
 hover:text-background px-6 py-4 font-semibold transition"
             >
-              {signedInName ? `Welcome, ${signedInName} · My account` : "Create a free account"}
+              {signedInName ? `Welcome, ${signedInName} · My account` : "Let’s talk"}
             </Link>
 
             {/* Social */}

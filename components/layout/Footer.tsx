@@ -12,15 +12,11 @@ import {
 } from "react-icons/fa6";
 
 const navLinks = [
-  { label: "Weather", href: "/weather" },
-  { label: "News", href: "/news" },
-  { label: "Learn", href: "/learn" },
-  { label: "Stocks", href: "/markets/stocks" },
-  { label: "Crypto", href: "/markets/crypto" },
-  { label: "AI Assistant", href: "/assistant" },
-  { label: "Affiliates", href: "/affiliates" },
-  { label: "Contact", href: "/ambreen/contact" },
-  { label: "Ambreen", href: "/ambreen" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Approach", href: "/approach" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const socials = [
@@ -63,7 +59,7 @@ AAYI<span className="text-accent">/TECH</span>
             </Link>
 
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
-              Practical tools for local weather, current headlines, market insights, and learning together. Built with care by AAYI TECH.
+              HubSpot and GoHighLevel CRM automation, connected systems, and custom web development by Ambreen Fatima.
             </p>
           </motion.div>
 
